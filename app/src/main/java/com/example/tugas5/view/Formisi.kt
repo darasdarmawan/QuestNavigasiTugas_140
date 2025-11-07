@@ -141,7 +141,61 @@ fun FormisiScreen(navController: NavController) {
                                 }
                             }
                         }
-
+                        Text(
+                            "STATUS PERKAWINAN",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color.Black,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        Column(modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_medium))) {
+                            statusList.forEach { item ->
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .selectable(
+                                            selected = status == item,
+                                            onClick = { status = item }
+                                        )
+                                        .padding(vertical = 4.dp)
+                                ) {
+                                    RadioButton(
+                                        selected = status == item,
+                                        onClick = { status = item },
+                                        colors = RadioButtonDefaults.colors(
+                                            selectedColor = colorResource(id = R.color.dark_purple),
+                                            unselectedColor = Color.Gray
+                                        )
+                                    )
+                                    Text(
+                                        item,
+                                        modifier = Modifier.padding(start = 8.dp),
+                                        color = Color.Black
+                                    )
+                                }
+                            }
+                        }
+                        Text(
+                            stringResource(R.string.alamat),
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color.Black,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        OutlinedTextField(
+                            value = alamat,
+                            onValueChange = { alamat = it },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 20.dp),
+                            placeholder = { Text(stringResource(R.string.alamat), color = Color.Black) },
+                            shape = RoundedCornerShape(8.dp),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                unfocusedBorderColor = Color.Gray.copy(alpha = 0.5f),
+                                focusedBorderColor = colorResource(id = R.color.dark_purple)
+                            )
+                        )
                     }
                 }
             }
