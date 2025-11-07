@@ -3,9 +3,11 @@ package com.example.tugas5.view
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -13,6 +15,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -64,7 +68,7 @@ fun FormisiScreen(navController: NavController) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(colorResource(id = R.color.light_purple_bg))
+                    .background(colorResource(id = R.color.light_purple))
                     .padding(paddingValues)
                     .padding(horizontal = 24.dp, vertical = dimensionResource(id = R.dimen.padding_medium)),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -102,6 +106,42 @@ fun FormisiScreen(navController: NavController) {
                                 focusedBorderColor = colorResource(id = R.color.dark_purple)
                             )
                         )
+                        Text(
+                            stringResource(R.string.jenis_kelamin),
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color.Black,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        Column(modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_medium))) {
+                            genderList.forEach { item ->
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .selectable(
+                                            selected = jenisKelamin == item,
+                                            onClick = { jenisKelamin = item }
+                                        )
+                                        .padding(vertical = 4.dp)
+                                ) {
+                                    RadioButton(
+                                        selected = jenisKelamin == item,
+                                        onClick = { jenisKelamin = item },
+                                        colors = RadioButtonDefaults.colors(
+                                            selectedColor = colorResource(id = R.color.dark_purple),
+                                            unselectedColor = Color.Gray
+                                        )
+                                    )
+                                    Text(
+                                        item,
+                                        modifier = Modifier.padding(start = 8.dp),
+                                        color = Color.Black
+                                    )
+                                }
+                            }
+                        }
+
                     }
                 }
             }
