@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.tugas5.R
+import com.example.tugas5.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
