@@ -1,5 +1,7 @@
 package com.example.tugas5.view
 
+import android.app.AlertDialog
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -226,4 +228,27 @@ fun FormisiScreen(navController: NavController) {
             }
         }
     )
+}
+
+private fun showDataPopup(
+    context: Context,
+    fullName: String,
+    gender: String,
+    maritalStatus: String,
+    address: String,
+    onDismiss: () -> Unit
+) {
+    val message = "Nama Lengkap: $fullName\n" +
+            "Jenis Kelamin: $gender\n" +
+            "Status Perkawinan: $maritalStatus\n" +
+            "Alamat: $address"
+
+    AlertDialog.Builder(context)
+        .setTitle("Data Pendaftaran")
+        .setMessage(message)
+        .setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+            onDismiss()
+        }
+        .show()
 }
