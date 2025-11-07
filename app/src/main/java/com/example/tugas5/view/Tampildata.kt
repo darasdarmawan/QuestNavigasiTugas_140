@@ -122,6 +122,25 @@ fun TampilDataScreen(
                         fontWeight = FontWeight.Medium
                     )
                 }
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
+
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    onClick = { navController.navigate(Screen.Formisi.route) },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFCE93D8),
+                        contentColor = Color.White
+                    ),
+                    shape = RoundedCornerShape(25.dp)
+                ) {
+                    Text(
+                        text = "Formulir Pendaftaran",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
             }
         }
     }
