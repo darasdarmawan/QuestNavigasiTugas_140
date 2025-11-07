@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -49,6 +50,14 @@ fun HomeScreen(navController: NavController) {
                     modifier = Modifier
                         .size(150.dp)
                         .padding(bottom = 16.dp)
+                )
+                Text(
+                    text = "Dara Syauqi Darmawan\n20230140140",
+                    fontSize = 16.sp,
+                    fontFamily = FontFamily.Monospace,
+                    color = colorResource(id = R.color.purple_500),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(bottom = 64.dp)
                 )
             }
         }
