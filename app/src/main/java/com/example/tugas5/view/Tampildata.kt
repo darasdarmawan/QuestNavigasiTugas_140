@@ -1,6 +1,10 @@
 package com.example.tugas5.view
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -10,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -44,7 +49,21 @@ fun TampilDataScreen(
                 )
             )
         }
-    ) {
-
+    ) {paddingValues ->
+        Column(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+                .background(Color(0xFFE1BEE7)), // Background ungu muda
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = dimensionResource(id = R.dimen.padding_medium))
+                    .padding(top = dimensionResource(id = R.dimen.padding_medium))
+                    .weight(1f),
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
+            ) {}
+        }
     }
 }
