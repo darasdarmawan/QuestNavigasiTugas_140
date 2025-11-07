@@ -3,8 +3,12 @@ package com.example.tugas5.view
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -12,11 +16,14 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.tugas5.R
@@ -54,7 +61,7 @@ fun TampilDataScreen(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .background(Color(0xFFE1BEE7)), // Background ungu muda
+                .background(Color(0xFFE1BEE7)),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Column(
@@ -63,7 +70,33 @@ fun TampilDataScreen(
                     .padding(top = dimensionResource(id = R.dimen.padding_medium))
                     .weight(1f),
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
-            ) {}
+            ) {
+                dataEntries.forEach { entry ->
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(Color.White.copy(alpha = 0.7f))
+                            .padding(dimensionResource(id = R.dimen.padding_medium))
+                    ) {
+                        Text(
+                            text = entry.first.uppercase(),
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Normal,
+                            color = Color(0xFF6A1B9A),
+                            letterSpacing = 0.5.sp
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = entry.second,
+                            fontWeight = FontWeight.Normal,
+                            fontFamily = FontFamily.Cursive,
+                            fontSize = 22.sp,
+                            color = Color(0xFF6A1B9A)
+                        )
+                    }
+                }
+            }
         }
     }
 }
