@@ -73,7 +73,12 @@ fun FormisiScreen(navController: NavController) {
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.9f)),
                     shape = RoundedCornerShape(dimensionResource(id = R.dimen.padding_medium)),
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-                )
+                ) {
+                    Column (
+                        modifier = Modifier.padding(20.dp),
+                        horizontalAlignment = Alignment.Start
+                    )
+                }
             }
         }
     )
